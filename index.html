@@ -25,16 +25,12 @@
     .line-btn:hover { opacity: 0.9; }
     .skip-btn { width: 100%; padding: 12px; background: transparent; color: rgba(129,199,132,0.6); border: 1px solid rgba(46,204,113,0.2); border-radius: 12px; font-family: 'Noto Sans JP', sans-serif; font-size: 0.85rem; font-weight: 700; cursor: pointer; margin-top: 8px; transition: all 0.2s; }
     .user-badge { background: rgba(46,204,113,0.1); border: 1px solid rgba(46,204,113,0.3); border-radius: 8px; padding: 10px 14px; font-size: 0.82rem; color: #2ecc71; font-weight: 700; margin-bottom: 16px; display: none; }
-
-    /* タイマー */
     .timer-wrap { text-align: center; margin-bottom: 20px; }
     .timer { font-size: 3.5rem; font-weight: 900; color: #2ecc71; line-height: 1; margin-bottom: 8px; transition: color 0.3s; }
     .timer.danger { color: #e74c3c; animation: blink 0.5s ease-in-out infinite; }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.5} }
     .timer-bar { width: 100%; height: 8px; background: rgba(0,0,0,0.3); border-radius: 99px; overflow: hidden; }
     .timer-fill { height: 100%; background: linear-gradient(90deg,#2ecc71,#1a7a3a); border-radius: 99px; transition: width 1s linear; }
-
-    /* 問題 */
     .q-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
     .q-num-label { font-size: 0.78rem; color: #2ecc71; font-weight: 700; }
     .q-cat { font-size: 0.72rem; color: #81c784; background: rgba(46,204,113,0.1); padding: 3px 10px; border-radius: 99px; }
@@ -46,8 +42,6 @@
     .option-btn.correct { background: rgba(46,204,113,0.2); border-color: #2ecc71; color: #2ecc71; font-weight: 700; }
     .option-btn.wrong { background: rgba(231,76,60,0.15); border-color: #e74c3c; color: #e74c3c; }
     .option-btn.timeout { background: rgba(150,150,150,0.1); border-color: #666; color: #666; }
-
-    /* 結果 */
     .result-emoji { text-align: center; font-size: 4.5rem; margin: 16px 0; }
     .result-score { text-align: center; font-size: 3.5rem; font-weight: 900; color: #2ecc71; }
     .result-total { text-align: center; font-size: 1rem; color: #81c784; margin-bottom: 4px; }
@@ -137,11 +131,7 @@
       <div class="q-cat" id="q-cat">-</div>
     </div>
     <div class="q-text" id="q-text"></div>
-    <div class="options" id="options">
-      <button class="option-btn" id="opt1"></button>
-      <button class="option-btn" id="opt2"></button>
-      <button class="option-btn" id="opt3"></button>
-    </div>
+    <div class="options" id="options"></div>
   </div>
 
   <!-- LOADING -->
@@ -167,7 +157,6 @@
   </div>
 
 </div>
-
 <script>
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbyC8FRMzZkGfKt6E4jxKDzpy32Mjv771tGLYhzLbpteH4AdT63Qx-F9AqgT_C8auJjXcA/exec';
 const QUIZ_COUNT = 20;
@@ -181,6 +170,7 @@ let score = 0;
 let wrongList = [];
 let timerInterval = null;
 let lineUid = null;
+let canAnswer = false;
 
 function getLineUid() {
   return document.cookie.split(';').map(c=>c.trim()).find(c=>c.startsWith('line_uid='))?.split('=')[1] || null;
@@ -249,40 +239,45 @@ function showQuestion() {
     return;
   }
 
+  canAnswer = false;
   const q = questions[currentIndex];
-  document.getElementById('q-num').textContent = '問題 ' + (currentIndex+1) + ' / ' + questions.length;
+
+  document.getElementById('q-num').textContent = '問題 ' + (currentIndex + 1) + ' / ' + questions.length;
   document.getElementById('q-cat').textContent = q.category || '';
   document.getElementById('q-text').textContent = q.question;
 
-  // 選択肢をリセット
-  const opts = ['opt1','opt2','opt3'];
-  const choices = [q.option1, q.option2, q.option3];
-  opts.forEach((id, i) => {
-    const btn = document.getElementById(id);
-    btn.textContent = choices[i];
-    btn.disabled = false;
+  // 選択肢を再生成
+  const optionsEl = document.getElementById('options');
+  optionsEl.innerHTML = '';
+  [q.option1, q.option2, q.option3].forEach((text, i) => {
+    const btn = document.createElement('button');
     btn.className = 'option-btn';
-    btn.onclick = () => selectAnswer(i + 1);
+    btn.textContent = text;
+    btn.addEventListener('click', function() {
+      if (!canAnswer) return;
+      selectAnswer(i + 1);
+    });
+    optionsEl.appendChild(btn);
   });
 
   startTimer();
+  canAnswer = true;
 }
 
 function startTimer() {
   clearInterval(timerInterval);
   let timeLeft = TIMER_SEC;
-  document.getElementById('timer').textContent = timeLeft;
-  document.getElementById('timer').className = 'timer';
-  document.getElementById('timer-fill').style.width = '100%';
+  const timerEl = document.getElementById('timer');
+  const fillEl = document.getElementById('timer-fill');
+  timerEl.textContent = timeLeft;
+  timerEl.className = 'timer';
+  fillEl.style.width = '100%';
 
   timerInterval = setInterval(() => {
     timeLeft--;
-    document.getElementById('timer').textContent = timeLeft;
-    document.getElementById('timer-fill').style.width = ((timeLeft / TIMER_SEC) * 100) + '%';
-
-    if (timeLeft <= 3) {
-      document.getElementById('timer').className = 'timer danger';
-    }
+    timerEl.textContent = timeLeft;
+    fillEl.style.width = ((timeLeft / TIMER_SEC) * 100) + '%';
+    if (timeLeft <= 3) timerEl.className = 'timer danger';
     if (timeLeft <= 0) {
       clearInterval(timerInterval);
       timeoutAnswer();
@@ -290,15 +285,18 @@ function startTimer() {
   }, 1000);
 }
 
-function timeoutAnswer() {
-  const q = questions[currentIndex];
-  disableOptions();
-  // 時間切れは不正解
-  wrongList.push({ q: q.question, correct: [q.option1, q.option2, q.option3][q.correct_answer - 1] });
-  // 全ボタンをグレーに
-  ['opt1','opt2','opt3'].forEach(id => {
-    document.getElementById(id).classList.add('timeout');
+function disableAllOptions() {
+  canAnswer = false;
+  document.querySelectorAll('.option-btn').forEach(btn => {
+    btn.disabled = true;
   });
+}
+
+function timeoutAnswer() {
+  disableAllOptions();
+  const q = questions[currentIndex];
+  wrongList.push({ q: q.question, correct: [q.option1, q.option2, q.option3][q.correct_answer - 1] });
+  document.querySelectorAll('.option-btn').forEach(btn => btn.classList.add('timeout'));
   setTimeout(() => {
     currentIndex++;
     showQuestion();
@@ -306,16 +304,19 @@ function timeoutAnswer() {
 }
 
 function selectAnswer(selected) {
+  if (!canAnswer) return;
   clearInterval(timerInterval);
+  disableAllOptions();
+
   const q = questions[currentIndex];
-  disableOptions();
+  const btns = document.querySelectorAll('.option-btn');
 
   if (selected === q.correct_answer) {
     score++;
-    document.getElementById('opt' + selected).classList.add('correct');
+    btns[selected - 1].classList.add('correct');
   } else {
-    document.getElementById('opt' + selected).classList.add('wrong');
-    document.getElementById('opt' + q.correct_answer).classList.add('correct');
+    btns[selected - 1].classList.add('wrong');
+    btns[q.correct_answer - 1].classList.add('correct');
     wrongList.push({ q: q.question, correct: [q.option1, q.option2, q.option3][q.correct_answer - 1] });
   }
 
@@ -323,14 +324,6 @@ function selectAnswer(selected) {
     currentIndex++;
     showQuestion();
   }, 600);
-}
-
-function disableOptions() {
-  ['opt1','opt2','opt3'].forEach(id => {
-    const btn = document.getElementById(id);
-    btn.disabled = true;
-    btn.onclick = null;
-  });
 }
 
 async function showResult() {
