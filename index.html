@@ -23,42 +23,44 @@
     .start-btn:hover { transform: translateY(-2px); }
     .line-btn { width: 100%; padding: 16px; background: #06C755; color: white; border: none; border-radius: 12px; font-family: 'Noto Sans JP', sans-serif; font-size: 0.95rem; font-weight: 700; cursor: pointer; margin-top: 12px; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
     .line-btn:hover { opacity: 0.9; }
-    .skip-btn { width: 100%; padding: 12px; background: transparent; color: rgba(129,199,132,0.6); border: 1px solid rgba(46,204,113,0.2); border-radius: 12px; font-family: 'Noto Sans JP', sans-serif; font-size: 0.85rem; font-weight: 700; cursor: pointer; margin-top: 8px; transition: all 0.2s; }
+    .skip-btn { width: 100%; padding: 12px; background: transparent; color: rgba(129,199,132,0.6); border: 1px solid rgba(46,204,113,0.2); border-radius: 12px; font-family: 'Noto Sans JP', sans-serif; font-size: 0.85rem; font-weight: 700; cursor: pointer; margin-top: 8px; }
     .user-badge { background: rgba(46,204,113,0.1); border: 1px solid rgba(46,204,113,0.3); border-radius: 8px; padding: 10px 14px; font-size: 0.82rem; color: #2ecc71; font-weight: 700; margin-bottom: 16px; display: none; }
+    .note { font-size: 0.75rem; color: rgba(129,199,132,0.5); text-align: center; margin-top: 14px; line-height: 1.6; }
+    /* タイマー */
     .timer-wrap { text-align: center; margin-bottom: 20px; }
-    .timer { font-size: 3.5rem; font-weight: 900; color: #2ecc71; line-height: 1; margin-bottom: 8px; transition: color 0.3s; }
+    .timer { font-size: 3.5rem; font-weight: 900; color: #2ecc71; line-height: 1; margin-bottom: 8px; }
     .timer.danger { color: #e74c3c; animation: blink 0.5s ease-in-out infinite; }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.5} }
     .timer-bar { width: 100%; height: 8px; background: rgba(0,0,0,0.3); border-radius: 99px; overflow: hidden; }
     .timer-fill { height: 100%; background: linear-gradient(90deg,#2ecc71,#1a7a3a); border-radius: 99px; transition: width 1s linear; }
+    /* 問題 */
     .q-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
     .q-num-label { font-size: 0.78rem; color: #2ecc71; font-weight: 700; }
     .q-cat { font-size: 0.72rem; color: #81c784; background: rgba(46,204,113,0.1); padding: 3px 10px; border-radius: 99px; }
     .q-text { font-size: 1.05rem; font-weight: 700; color: #e8f5e9; line-height: 1.7; margin-bottom: 20px; min-height: 80px; }
     .options { display: flex; flex-direction: column; gap: 12px; }
-    .option-btn { width: 100%; padding: 16px 18px; background: rgba(255,255,255,0.05); border: 2px solid rgba(100,200,120,0.2); border-radius: 12px; font-family: 'Noto Sans JP', sans-serif; font-size: 0.95rem; color: #a5d6a7; cursor: pointer; transition: all 0.2s; text-align: left; }
-    .option-btn:hover:not(:disabled) { background: rgba(46,204,113,0.12); border-color: #2ecc71; color: #e8f5e9; transform: translateX(6px); }
-    .option-btn:disabled { cursor: not-allowed; }
-    .option-btn.correct { background: rgba(46,204,113,0.2); border-color: #2ecc71; color: #2ecc71; font-weight: 700; }
-    .option-btn.wrong { background: rgba(231,76,60,0.15); border-color: #e74c3c; color: #e74c3c; }
-    .option-btn.timeout { background: rgba(150,150,150,0.1); border-color: #666; color: #666; }
+    .opt { width: 100%; padding: 16px 18px; background: rgba(255,255,255,0.05); border: 2px solid rgba(100,200,120,0.2); border-radius: 12px; font-family: 'Noto Sans JP', sans-serif; font-size: 0.95rem; color: #a5d6a7; cursor: pointer; transition: all 0.2s; text-align: left; }
+    .opt:hover { background: rgba(46,204,113,0.12); border-color: #2ecc71; color: #e8f5e9; transform: translateX(6px); }
+    .opt.correct { background: rgba(46,204,113,0.2) !important; border-color: #2ecc71 !important; color: #2ecc71 !important; font-weight: 700; transform: none; }
+    .opt.wrong { background: rgba(231,76,60,0.15) !important; border-color: #e74c3c !important; color: #e74c3c !important; transform: none; }
+    .opt.timeout { background: rgba(150,150,150,0.1) !important; border-color: #666 !important; color: #666 !important; transform: none; }
+    /* 結果 */
     .result-emoji { text-align: center; font-size: 4.5rem; margin: 16px 0; }
-    .result-score { text-align: center; font-size: 3.5rem; font-weight: 900; color: #2ecc71; }
-    .result-total { text-align: center; font-size: 1rem; color: #81c784; margin-bottom: 4px; }
-    .result-percent { text-align: center; font-size: 1.4rem; font-weight: 700; color: #a5d6a7; margin-bottom: 20px; }
+    .result-score-big { text-align: center; font-size: 3.5rem; font-weight: 900; color: #2ecc71; }
+    .result-sub { text-align: center; font-size: 1rem; color: #81c784; margin-bottom: 4px; }
+    .result-pct { text-align: center; font-size: 1.4rem; font-weight: 700; color: #a5d6a7; margin-bottom: 20px; }
     .prize-box { background: rgba(255,215,0,0.08); border: 2px solid rgba(255,215,0,0.4); border-radius: 14px; padding: 20px; text-align: center; margin: 16px 0; }
     .prize-title { font-size: 1.2rem; font-weight: 900; color: #ffd700; margin-bottom: 8px; }
     .prize-desc { font-size: 0.85rem; color: #c8a800; line-height: 1.8; }
-    .no-prize-box { background: rgba(255,255,255,0.04); border: 1px solid rgba(100,200,120,0.15); border-radius: 14px; padding: 20px; text-align: center; margin: 16px 0; }
-    .no-prize-text { font-size: 0.95rem; color: #81c784; line-height: 1.8; }
+    .no-prize-box { background: rgba(255,255,255,0.04); border: 1px solid rgba(100,200,120,0.15); border-radius: 14px; padding: 20px; text-align: center; margin: 16px 0; font-size: 0.95rem; color: #81c784; line-height: 1.8; }
     .wrong-list { margin: 16px 0; }
-    .wrong-list-title { font-size: 0.85rem; font-weight: 700; color: #e74c3c; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid rgba(231,76,60,0.3); }
+    .wrong-title { font-size: 0.85rem; font-weight: 700; color: #e74c3c; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid rgba(231,76,60,0.3); }
     .wrong-item { background: rgba(231,76,60,0.08); border: 1px solid rgba(231,76,60,0.2); border-radius: 10px; padding: 12px 14px; margin-bottom: 8px; }
-    .wrong-item-q { font-size: 0.85rem; color: #e8f5e9; font-weight: 700; margin-bottom: 6px; line-height: 1.5; }
-    .wrong-item-a { font-size: 0.82rem; color: #2ecc71; }
+    .wrong-q { font-size: 0.85rem; color: #e8f5e9; font-weight: 700; margin-bottom: 6px; line-height: 1.5; }
+    .wrong-a { font-size: 0.82rem; color: #2ecc71; }
     .retry-btn { width: 100%; padding: 16px; background: transparent; color: #2ecc71; border: 1px solid #2ecc71; border-radius: 12px; font-family: 'Noto Sans JP', sans-serif; font-size: 0.95rem; font-weight: 700; cursor: pointer; margin-top: 12px; transition: all 0.2s; }
     .retry-btn:hover { background: rgba(46,204,113,0.1); }
-    .note { font-size: 0.75rem; color: rgba(129,199,132,0.5); text-align: center; margin-top: 14px; line-height: 1.6; }
+    /* ローディング */
     .loading-wrap { text-align: center; padding: 40px 0; }
     .loading-icon { font-size: 3rem; display: block; margin-bottom: 12px; animation: spin 1.2s linear infinite; }
     @keyframes spin { 0%{transform:rotate(0deg)} 100%{transform:rotate(360deg)} }
@@ -75,18 +77,11 @@
     <p class="desc">男性ホルモンに関する20問のクイズです。95%以上正解すると毎月5名にAmazonギフト券500円分が当たる抽選に参加できます！</p>
     <div class="info-box">
       <div class="info-box-title">🎁 プレゼントについて</div>
-      <div class="info-box-body">
-        正解率95%以上でプレゼント抽選参加！<br>
-        毎月5名様にAmazonギフト券500円分<br>
-        当選者にはLINEでご連絡します
-      </div>
+      <div class="info-box-body">正解率95%以上でプレゼント抽選参加！<br>毎月5名様にAmazonギフト券500円分<br>当選者にはLINEでご連絡します</div>
     </div>
     <div class="info-box">
       <div class="info-box-title">⏱️ クイズのルール</div>
-      <div class="info-box-body">
-        全20問・各問10秒以内に回答<br>
-        時間切れは不正解扱いになります
-      </div>
+      <div class="info-box-body">全20問・各問10秒以内に回答<br>時間切れは不正解扱いになります</div>
     </div>
     <div class="user-badge" id="user-badge">✅ LINEでログイン済み</div>
     <label class="form-label">📋 年代を選択してください</label>
@@ -111,12 +106,12 @@
       <option value="70代半ば">70代半ば（75〜77歳）</option>
       <option value="70代後半">70代後半（78〜79歳）</option>
     </select>
-    <button class="start-btn" id="start-btn">クイズをはじめる →</button>
-    <button class="line-btn" id="line-login-btn">
+    <button class="start-btn" id="btn-start">クイズをはじめる →</button>
+    <button class="line-btn" id="btn-line">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.03 2 11c0 3.08 1.67 5.77 4.19 7.4L5.5 22l3.79-1.97C10.1 20.63 11.03 21 12 21c5.52 0 10-4.03 10-9s-4.48-9-10-9z"/></svg>
       LINEでログインして抽選に参加する
     </button>
-    <button class="skip-btn" id="skip-btn">ログインせずに始める（抽選対象外）</button>
+    <button class="skip-btn" id="btn-skip">ログインせずに始める（抽選対象外）</button>
     <p class="note">※抽選に参加するにはLINEログインが必要です。</p>
   </div>
 
@@ -124,11 +119,11 @@
   <div id="screen-quiz" class="card" style="display:none">
     <div class="timer-wrap">
       <div class="timer" id="timer">10</div>
-      <div class="timer-bar"><div class="timer-fill" id="timer-fill" style="width:100%"></div></div>
+      <div class="timer-bar"><div class="timer-fill" id="timer-fill"></div></div>
     </div>
     <div class="q-info">
       <div class="q-num-label" id="q-num">問題 1 / 20</div>
-      <div class="q-cat" id="q-cat">-</div>
+      <div class="q-cat" id="q-cat"></div>
     </div>
     <div class="q-text" id="q-text"></div>
     <div class="options" id="options"></div>
@@ -138,7 +133,7 @@
   <div id="screen-loading" class="card" style="display:none">
     <div class="loading-wrap">
       <span class="loading-icon">⚙️</span>
-      <div class="loading-text" id="loading-text">問題を読み込み中...</div>
+      <div class="loading-text" id="loading-text">読み込み中...</div>
     </div>
   </div>
 
@@ -146,244 +141,213 @@
   <div id="screen-result" class="card" style="display:none">
     <div class="badge">RESULT</div>
     <h1>クイズ結果</h1>
-    <div class="result-emoji" id="result-emoji">🎯</div>
-    <div class="result-score" id="result-score">0</div>
-    <div class="result-total" id="result-total">問正解 / 20問</div>
-    <div class="result-percent" id="result-percent">正解率 0%</div>
+    <div class="result-emoji" id="r-emoji">🎯</div>
+    <div class="result-score-big" id="r-score">0</div>
+    <div class="result-sub" id="r-sub">問正解 / 20問</div>
+    <div class="result-pct" id="r-pct">正解率 0%</div>
     <div id="prize-area"></div>
-    <div class="wrong-list" id="wrong-list"></div>
+    <div id="wrong-area"></div>
     <p class="note">※このクイズは学習・啓発を目的としています。</p>
-    <button class="retry-btn" id="retry-btn">もう一度チャレンジ 🔄</button>
+    <button class="retry-btn" id="btn-retry">もう一度チャレンジ 🔄</button>
   </div>
 
 </div>
 <script>
+// ===== 設定 =====
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbyC8FRMzZkGfKt6E4jxKDzpy32Mjv771tGLYhzLbpteH4AdT63Qx-F9AqgT_C8auJjXcA/exec';
-const QUIZ_COUNT = 20;
-const PRIZE_THRESHOLD = 95;
-const TIMER_SEC = 10;
 const LINE_CHANNEL_ID = '2010588724';
+const TIMER_SEC = 10;
+const PRIZE_MIN = 95;
 
+// ===== 状態 =====
 let questions = [];
-let currentIndex = 0;
+let idx = 0;
 let score = 0;
 let wrongList = [];
-let timerInterval = null;
+let timerID = null;
+let lock = false;
 let lineUid = null;
-let canAnswer = false;
 
-function getLineUid() {
-  return document.cookie.split(';').map(c=>c.trim()).find(c=>c.startsWith('line_uid='))?.split('=')[1] || null;
-}
-
+// ===== 初期化 =====
 window.addEventListener('DOMContentLoaded', () => {
-  lineUid = getLineUid();
+  lineUid = (document.cookie.split(';').map(c=>c.trim()).find(c=>c.startsWith('line_uid=')) || '').split('=')[1] || null;
   if (lineUid) {
     document.getElementById('user-badge').style.display = 'block';
-    document.getElementById('line-login-btn').style.display = 'none';
-    document.getElementById('skip-btn').style.display = 'none';
+    document.getElementById('btn-line').style.display = 'none';
+    document.getElementById('btn-skip').style.display = 'none';
   }
+  document.getElementById('btn-start').onclick = onStart;
+  document.getElementById('btn-line').onclick = onLine;
+  document.getElementById('btn-skip').onclick = onStart;
+  document.getElementById('btn-retry').onclick = () => location.reload();
 });
 
-function lineLogin() {
-  const age = document.getElementById('age-group').value;
-  if (!age) { alert('年代を選択してください'); return; }
-  const params = new URLSearchParams({
-    response_type: 'code',
-    client_id: LINE_CHANNEL_ID,
-    redirect_uri: window.location.origin + '/api/line-callback',
-    state: Math.random().toString(36).substring(2),
-    scope: 'profile'
+// ===== 画面切替 =====
+function show(id) {
+  ['screen-top','screen-quiz','screen-loading','screen-result'].forEach(s => {
+    document.getElementById(s).style.display = s === id ? 'block' : 'none';
   });
-  window.location.href = 'https://access.line.me/oauth2/v2.1/authorize?' + params.toString();
-}
-
-function checkAndStart() {
-  const age = document.getElementById('age-group').value;
-  if (!age) { alert('年代を選択してください'); return; }
-  startQuiz();
-}
-
-function showScreen(id) {
-  document.querySelectorAll('.card').forEach(c => c.style.display = 'none');
-  document.getElementById(id).style.display = 'block';
   window.scrollTo(0, 0);
 }
 
-async function startQuiz() {
-  showScreen('screen-loading');
+// ===== LINEログイン =====
+function onLine() {
+  if (!document.getElementById('age-group').value) { alert('年代を選択してください'); return; }
+  const p = new URLSearchParams({
+    response_type: 'code', client_id: LINE_CHANNEL_ID,
+    redirect_uri: location.origin + '/api/line-callback',
+    state: Math.random().toString(36).slice(2), scope: 'profile'
+  });
+  location.href = 'https://access.line.me/oauth2/v2.1/authorize?' + p;
+}
+
+// ===== クイズ開始 =====
+async function onStart() {
+  if (!document.getElementById('age-group').value) { alert('年代を選択してください'); return; }
+  show('screen-loading');
   document.getElementById('loading-text').textContent = '問題を読み込み中...';
   try {
     const res = await fetch(GAS_URL + '?action=getQuestions');
     const data = await res.json();
-    if (!data.success || !data.questions || data.questions.length === 0) {
+    if (!data.success || !data.questions || !data.questions.length) {
       alert('問題が登録されていません。管理者にお問い合わせください。');
-      showScreen('screen-top');
-      return;
+      show('screen-top'); return;
     }
     questions = data.questions;
-    currentIndex = 0;
-    score = 0;
-    wrongList = [];
-    showScreen('screen-quiz');
-    showQuestion();
+    idx = 0; score = 0; wrongList = [];
+    show('screen-quiz');
+    nextQ();
   } catch(e) {
+    console.error(e);
     alert('問題の読み込みに失敗しました。');
-    showScreen('screen-top');
+    show('screen-top');
   }
 }
 
-function showQuestion() {
-  if (currentIndex >= questions.length) {
-    showResult();
-    return;
-  }
+// ===== 問題表示 =====
+function nextQ() {
+  if (idx >= questions.length) { finalize(); return; }
+  lock = false;
 
-  canAnswer = false;
-  const q = questions[currentIndex];
+  const q = questions[idx];
+  const correct = parseInt(q.correct_answer, 10);
 
-  document.getElementById('q-num').textContent = '問題 ' + (currentIndex + 1) + ' / ' + questions.length;
+  document.getElementById('q-num').textContent = '問題 ' + (idx+1) + ' / ' + questions.length;
   document.getElementById('q-cat').textContent = q.category || '';
-  document.getElementById('q-text').textContent = q.question;
+  document.getElementById('q-text').textContent = q.question || '';
 
-  // 選択肢を再生成
-  const optionsEl = document.getElementById('options');
-  optionsEl.innerHTML = '';
-  [q.option1, q.option2, q.option3].forEach((text, i) => {
+  // 選択肢を作り直す
+  const box = document.getElementById('options');
+  box.innerHTML = '';
+  [q.option1, q.option2, q.option3].forEach((txt, i) => {
     const btn = document.createElement('button');
-    btn.className = 'option-btn';
-    btn.textContent = text;
-    btn.addEventListener('click', function() {
-      if (!canAnswer) return;
-      selectAnswer(i + 1);
-    });
-    optionsEl.appendChild(btn);
+    btn.className = 'opt';
+    btn.textContent = txt;
+    btn.dataset.num = String(i + 1);
+    btn.onclick = () => answer(btn, i + 1, correct, [q.option1, q.option2, q.option3]);
+    box.appendChild(btn);
   });
 
-  startTimer();
-  canAnswer = true;
+  startTimer(correct, [q.option1, q.option2, q.option3]);
 }
 
-function startTimer() {
-  clearInterval(timerInterval);
-  let timeLeft = TIMER_SEC;
+// ===== タイマー =====
+function startTimer(correct, choices) {
+  clearInterval(timerID);
+  let t = TIMER_SEC;
   const timerEl = document.getElementById('timer');
   const fillEl = document.getElementById('timer-fill');
-  timerEl.textContent = timeLeft;
   timerEl.className = 'timer';
+  timerEl.textContent = t;
   fillEl.style.width = '100%';
 
-  timerInterval = setInterval(() => {
-    timeLeft--;
-    timerEl.textContent = timeLeft;
-    fillEl.style.width = ((timeLeft / TIMER_SEC) * 100) + '%';
-    if (timeLeft <= 3) timerEl.className = 'timer danger';
-    if (timeLeft <= 0) {
-      clearInterval(timerInterval);
-      timeoutAnswer();
+  timerID = setInterval(() => {
+    t--;
+    timerEl.textContent = t;
+    fillEl.style.width = ((t / TIMER_SEC) * 100) + '%';
+    if (t <= 3) timerEl.className = 'timer danger';
+    if (t <= 0) {
+      clearInterval(timerID);
+      if (!lock) {
+        lock = true;
+        // 時間切れ：全ボタンをタイムアウト色に
+        document.querySelectorAll('.opt').forEach(b => { b.classList.add('timeout'); b.onclick = null; });
+        wrongList.push({ q: document.getElementById('q-text').textContent, a: choices[correct-1] });
+        setTimeout(() => { idx++; nextQ(); }, 900);
+      }
     }
   }, 1000);
 }
 
-function disableAllOptions() {
-  canAnswer = false;
-  document.querySelectorAll('.option-btn').forEach(btn => {
-    btn.disabled = true;
-  });
-}
+// ===== 回答処理 =====
+function answer(btn, selected, correct, choices) {
+  if (lock) return;
+  lock = true;
+  clearInterval(timerID);
 
-function timeoutAnswer() {
-  disableAllOptions();
-  const q = questions[currentIndex];
-  wrongList.push({ q: q.question, correct: [q.option1, q.option2, q.option3][q.correct_answer - 1] });
-  document.querySelectorAll('.option-btn').forEach(btn => btn.classList.add('timeout'));
-  setTimeout(() => {
-    currentIndex++;
-    showQuestion();
-  }, 800);
-}
+  // 全ボタンのクリックを無効化
+  document.querySelectorAll('.opt').forEach(b => { b.onclick = null; });
 
-function selectAnswer(selected) {
-  if (!canAnswer) return;
-  clearInterval(timerInterval);
-  disableAllOptions();
-
-  const q = questions[currentIndex];
-  const btns = document.querySelectorAll('.option-btn');
-
-  if (selected === q.correct_answer) {
+  if (selected === correct) {
     score++;
-    btns[selected - 1].classList.add('correct');
+    btn.classList.add('correct');
   } else {
-    btns[selected - 1].classList.add('wrong');
-    btns[q.correct_answer - 1].classList.add('correct');
-    wrongList.push({ q: q.question, correct: [q.option1, q.option2, q.option3][q.correct_answer - 1] });
+    btn.classList.add('wrong');
+    // 正解ボタンを緑に
+    document.querySelectorAll('.opt').forEach(b => {
+      if (parseInt(b.dataset.num) === correct) b.classList.add('correct');
+    });
+    wrongList.push({ q: document.getElementById('q-text').textContent, a: choices[correct-1] });
   }
 
-  setTimeout(() => {
-    currentIndex++;
-    showQuestion();
-  }, 600);
+  setTimeout(() => { idx++; nextQ(); }, 700);
 }
 
-async function showResult() {
-  clearInterval(timerInterval);
-  showScreen('screen-loading');
+// ===== 結果表示 =====
+async function finalize() {
+  clearInterval(timerID);
+  show('screen-loading');
   document.getElementById('loading-text').textContent = '結果を集計中...';
 
   const total = questions.length;
-  const pct = Math.round((score / total) * 100);
-  const isPrize = lineUid && pct >= PRIZE_THRESHOLD;
+  const pct = Math.round(score / total * 100);
   const age = document.getElementById('age-group').value;
+  const isPrize = !!lineUid && pct >= PRIZE_MIN;
 
   try {
     await fetch(GAS_URL, {
       method: 'POST',
-      body: JSON.stringify({
-        action: 'saveResult',
-        line_id: lineUid || '未ログイン',
-        age: age,
-        correct: score,
-        percentage: pct
-      })
+      body: JSON.stringify({ action: 'saveResult', line_id: lineUid || '未ログイン', age, correct: score, percentage: pct })
     });
-  } catch(e) {
-    console.error('保存エラー:', e);
-  }
+  } catch(e) { console.error('保存エラー', e); }
 
   setTimeout(() => {
-    document.getElementById('result-emoji').textContent = pct >= 95 ? '🏆' : pct >= 80 ? '🎯' : pct >= 60 ? '📚' : '💪';
-    document.getElementById('result-score').textContent = score;
-    document.getElementById('result-total').textContent = '問正解 / ' + total + '問';
-    document.getElementById('result-percent').textContent = '正解率 ' + pct + '%';
+    document.getElementById('r-emoji').textContent = pct >= 95 ? '🏆' : pct >= 80 ? '🎯' : pct >= 60 ? '📚' : '💪';
+    document.getElementById('r-score').textContent = score;
+    document.getElementById('r-sub').textContent = '問正解 / ' + total + '問';
+    document.getElementById('r-pct').textContent = '正解率 ' + pct + '%';
 
-    const prizeArea = document.getElementById('prize-area');
+    const pa = document.getElementById('prize-area');
     if (isPrize) {
-      prizeArea.innerHTML = '<div class="prize-box"><div class="prize-title">🎉 おめでとうございます！</div><div class="prize-desc">正解率' + pct + '%達成！<br>Amazonギフト券500円分の抽選対象です。<br>当選者にはLINEでご連絡します。</div></div>';
+      pa.innerHTML = '<div class="prize-box"><div class="prize-title">🎉 おめでとうございます！</div><div class="prize-desc">正解率' + pct + '%達成！<br>Amazonギフト券500円分の抽選対象です。<br>当選者にはLINEでご連絡します。</div></div>';
     } else if (!lineUid) {
-      prizeArea.innerHTML = '<div class="no-prize-box"><div class="no-prize-text">抽選に参加するには<br>LINEログインが必要です。</div></div>';
+      pa.innerHTML = '<div class="no-prize-box">抽選に参加するには<br>LINEログインが必要です。</div>';
     } else {
-      prizeArea.innerHTML = '<div class="no-prize-box"><div class="no-prize-text">惜しい！正解率95%以上で<br>抽選対象になります。<br>次回またチャレンジしてください！</div></div>';
+      pa.innerHTML = '<div class="no-prize-box">惜しい！正解率95%以上で<br>抽選対象になります。<br>次回またチャレンジしてください！</div>';
     }
 
-    const wrongEl = document.getElementById('wrong-list');
+    const wa = document.getElementById('wrong-area');
     if (wrongList.length > 0) {
-      wrongEl.innerHTML = '<div class="wrong-list-title">❌ 不正解・時間切れだった問題（' + wrongList.length + '問）</div>'
-        + wrongList.map(w =>
-          '<div class="wrong-item"><div class="wrong-item-q">Q. ' + w.q + '</div><div class="wrong-item-a">✅ 正解：' + w.correct + '</div></div>'
-        ).join('');
+      wa.innerHTML = '<div class="wrong-list"><div class="wrong-title">❌ 不正解・時間切れ（' + wrongList.length + '問）</div>'
+        + wrongList.map(w => '<div class="wrong-item"><div class="wrong-q">Q. ' + w.q + '</div><div class="wrong-a">✅ 正解：' + w.a + '</div></div>').join('')
+        + '</div>';
     } else {
-      wrongEl.innerHTML = '<div style="text-align:center;color:#2ecc71;font-weight:700;padding:12px;">🎉 全問正解！素晴らしい！</div>';
+      wa.innerHTML = '<div style="text-align:center;color:#2ecc71;font-weight:700;padding:12px;">🎉 全問正解！素晴らしい！</div>';
     }
 
-    showScreen('screen-result');
+    show('screen-result');
   }, 1000);
 }
-
-document.getElementById('start-btn').addEventListener('click', checkAndStart);
-document.getElementById('line-login-btn').addEventListener('click', lineLogin);
-document.getElementById('skip-btn').addEventListener('click', checkAndStart);
-document.getElementById('retry-btn').addEventListener('click', () => location.reload());
 </script>
 </body>
 </html>
