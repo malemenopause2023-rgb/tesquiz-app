@@ -159,6 +159,7 @@ const QUIZ_COUNT = 20;
 const PRIZE_THRESHOLD = 95;
 const AUTO_NEXT_DELAY = 1200;
 const AUTO_NEXT_DELAY_WRONG = 2000;
+const LINE_CHANNEL_ID = '2010588724';
 
 let questions = [];
 let currentIndex = 0;
@@ -167,7 +168,6 @@ let wrongList = [];
 let answered = false;
 let lineUid = null;
 
-// LINEログイン確認
 function getLineUid() {
   return document.cookie.split(';').map(c=>c.trim()).find(c=>c.startsWith('line_uid='))?.split('=')[1] || null;
 }
@@ -186,7 +186,7 @@ function lineLogin() {
   if (!age) { alert('年代を選択してください'); return; }
   const params = new URLSearchParams({
     response_type: 'code',
-    client_id: '2009657612',
+    client_id: LINE_CHANNEL_ID,
     redirect_uri: window.location.origin + '/api/line-callback',
     state: Math.random().toString(36).substring(2),
     scope: 'profile'
@@ -213,7 +213,7 @@ async function startQuiz() {
     const res = await fetch(GAS_URL + '?action=getQuestions');
     const data = await res.json();
     if (!data.success || !data.questions.length) {
-      alert('問題の読み込みに失敗しました。管理者にお問い合わせください。');
+      alert('問題の読み込みに失敗しました。');
       showScreen('screen-top');
       return;
     }
@@ -285,12 +285,10 @@ function selectAnswer(index) {
 async function showResult() {
   showScreen('screen-loading');
   document.querySelector('.loading-text').textContent = '結果を集計中...';
-
   const pct = Math.round((score / QUIZ_COUNT) * 100);
   const isPrize = lineUid && pct >= PRIZE_THRESHOLD;
   const age = document.getElementById('age-group').value;
 
-  // GASに結果を保存
   try {
     await fetch(GAS_URL, {
       method: 'POST',
@@ -311,7 +309,6 @@ async function showResult() {
     document.getElementById('result-score').textContent = score;
     document.getElementById('result-percent').textContent = '正解率 ' + pct + '%';
 
-    // 当選エリア
     const prizeArea = document.getElementById('prize-area');
     if (isPrize) {
       prizeArea.innerHTML = '<div class="prize-box"><div class="prize-title">🎉 おめでとうございます！</div><div class="prize-desc">正解率' + pct + '%達成！<br>Amazonギフト券500円分の抽選対象です。<br>当選者にはLINEでご連絡します。</div></div>';
@@ -321,7 +318,6 @@ async function showResult() {
       prizeArea.innerHTML = '<div class="no-prize-box"><div class="no-prize-text">惜しい！正解率95%以上で<br>抽選対象になります。<br>次回またチャレンジしてください！</div></div>';
     }
 
-    // 不正解一覧
     const wrongEl = document.getElementById('wrong-list');
     if (wrongList.length > 0) {
       wrongEl.innerHTML = '<div class="wrong-list-title">❌ 不正解だった問題（' + wrongList.length + '問）</div>'
