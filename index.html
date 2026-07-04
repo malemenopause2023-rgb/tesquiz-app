@@ -7,64 +7,64 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Noto Sans JP', sans-serif; background: linear-gradient(160deg,#0a2e1a 0%,#0d3d2a 40%,#0a2a3d 100%); min-height: 100vh; padding: 16px; display: flex; align-items: flex-start; justify-content: center; }
+    body { font-family: 'Noto Sans JP', sans-serif; background: linear-gradient(160deg,#e0f7fa 0%,#b2ebf2 40%,#e3f2fd 100%); min-height: 100vh; padding: 16px; display: flex; align-items: flex-start; justify-content: center; }
     .container { max-width: 500px; width: 100%; padding-top: 16px; padding-bottom: 48px; }
-    .card { background: rgba(255,255,255,0.05); backdrop-filter: blur(12px); border-radius: 20px; padding: 28px 24px; box-shadow: 0 8px 32px rgba(0,0,0,0.3); border: 1px solid rgba(100,200,120,0.2); }
-    .badge { display: inline-block; background: linear-gradient(135deg,#1a7a3a,#2ecc71); color: white; font-size: 0.72rem; font-weight: 700; padding: 4px 14px; border-radius: 99px; margin-bottom: 14px; letter-spacing: 0.08em; }
-    h1 { font-size: 1.6rem; font-weight: 900; color: #e8f5e9; margin-bottom: 8px; line-height: 1.4; }
-    .desc { font-size: 0.85rem; color: #81c784; line-height: 1.8; margin-bottom: 20px; }
-    .info-box { background: rgba(46,204,113,0.08); border: 1px solid rgba(46,204,113,0.2); border-radius: 12px; padding: 14px; margin-bottom: 16px; }
-    .info-box-title { font-size: 0.78rem; font-weight: 700; color: #2ecc71; margin-bottom: 8px; }
-    .info-box-body { font-size: 0.83rem; color: #81c784; line-height: 1.9; }
-    .form-label { font-size: 0.82rem; font-weight: 700; color: #2ecc71; margin-bottom: 8px; display: block; }
-    .age-select { width: 100%; padding: 12px; background: rgba(0,0,0,0.3); border: 1px solid rgba(46,204,113,0.3); border-radius: 8px; color: #e8f5e9; font-family: 'Noto Sans JP', sans-serif; font-size: 0.88rem; outline: none; cursor: pointer; appearance: none; margin-bottom: 16px; }
-    .age-select option { background: #1a2e1a; }
-    .start-btn { width: 100%; padding: 18px; background: linear-gradient(135deg,#1a7a3a,#2ecc71); color: white; border: none; border-radius: 12px; font-family: 'Noto Sans JP', sans-serif; font-size: 1rem; font-weight: 900; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 20px rgba(46,204,113,0.3); }
-    .start-btn:hover { transform: translateY(-2px); }
+    .card { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border-radius: 20px; padding: 28px 24px; box-shadow: 0 8px 32px rgba(0,150,200,0.12); border: 1px solid rgba(100,200,240,0.3); }
+    .badge { display: inline-block; background: linear-gradient(135deg,#0288d1,#29b6f6); color: white; font-size: 0.72rem; font-weight: 700; padding: 4px 14px; border-radius: 99px; margin-bottom: 14px; letter-spacing: 0.08em; }
+    h1 { font-size: 1.6rem; font-weight: 900; color: #01579b; margin-bottom: 8px; line-height: 1.4; }
+    .desc { font-size: 0.85rem; color: #0277bd; line-height: 1.8; margin-bottom: 20px; }
+    .info-box { background: rgba(2,136,209,0.07); border: 1px solid rgba(2,136,209,0.2); border-radius: 12px; padding: 14px; margin-bottom: 16px; }
+    .info-box-title { font-size: 0.78rem; font-weight: 700; color: #0288d1; margin-bottom: 8px; }
+    .info-box-body { font-size: 0.83rem; color: #0277bd; line-height: 1.9; }
+    .form-label { font-size: 0.82rem; font-weight: 700; color: #0288d1; margin-bottom: 8px; display: block; }
+    .age-select { width: 100%; padding: 12px; background: rgba(2,136,209,0.05); border: 1px solid rgba(2,136,209,0.3); border-radius: 8px; color: #01579b; font-family: 'Noto Sans JP', sans-serif; font-size: 0.88rem; outline: none; cursor: pointer; appearance: none; margin-bottom: 16px; }
+    .age-select option { background: #e0f7fa; }
+    .start-btn { width: 100%; padding: 18px; background: linear-gradient(135deg,#0288d1,#29b6f6); color: white; border: none; border-radius: 12px; font-family: 'Noto Sans JP', sans-serif; font-size: 1rem; font-weight: 900; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 20px rgba(2,136,209,0.3); }
+    .start-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(2,136,209,0.4); }
     .line-btn { width: 100%; padding: 16px; background: #06C755; color: white; border: none; border-radius: 12px; font-family: 'Noto Sans JP', sans-serif; font-size: 0.95rem; font-weight: 700; cursor: pointer; margin-top: 12px; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
     .line-btn:hover { opacity: 0.9; }
-    .skip-btn { width: 100%; padding: 12px; background: transparent; color: rgba(129,199,132,0.6); border: 1px solid rgba(46,204,113,0.2); border-radius: 12px; font-family: 'Noto Sans JP', sans-serif; font-size: 0.85rem; font-weight: 700; cursor: pointer; margin-top: 8px; }
-    .user-badge { background: rgba(46,204,113,0.1); border: 1px solid rgba(46,204,113,0.3); border-radius: 8px; padding: 10px 14px; font-size: 0.82rem; color: #2ecc71; font-weight: 700; margin-bottom: 16px; display: none; }
-    .note { font-size: 0.75rem; color: rgba(129,199,132,0.5); text-align: center; margin-top: 14px; line-height: 1.6; }
+    .skip-btn { width: 100%; padding: 12px; background: transparent; color: #90caf9; border: 1px solid rgba(2,136,209,0.2); border-radius: 12px; font-family: 'Noto Sans JP', sans-serif; font-size: 0.85rem; font-weight: 700; cursor: pointer; margin-top: 8px; }
+    .user-badge { background: rgba(2,136,209,0.08); border: 1px solid rgba(2,136,209,0.3); border-radius: 8px; padding: 10px 14px; font-size: 0.82rem; color: #0288d1; font-weight: 700; margin-bottom: 16px; display: none; }
+    .note { font-size: 0.75rem; color: #90caf9; text-align: center; margin-top: 14px; line-height: 1.6; }
     /* タイマー */
     .timer-wrap { text-align: center; margin-bottom: 20px; }
-    .timer { font-size: 3.5rem; font-weight: 900; color: #2ecc71; line-height: 1; margin-bottom: 8px; }
+    .timer { font-size: 3.5rem; font-weight: 900; color: #0288d1; line-height: 1; margin-bottom: 8px; }
     .timer.danger { color: #e74c3c; animation: blink 0.5s ease-in-out infinite; }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.5} }
-    .timer-bar { width: 100%; height: 8px; background: rgba(0,0,0,0.3); border-radius: 99px; overflow: hidden; }
-    .timer-fill { height: 100%; background: linear-gradient(90deg,#2ecc71,#1a7a3a); border-radius: 99px; transition: width 1s linear; }
+    .timer-bar { width: 100%; height: 8px; background: rgba(2,136,209,0.1); border-radius: 99px; overflow: hidden; }
+    .timer-fill { height: 100%; background: linear-gradient(90deg,#29b6f6,#0288d1); border-radius: 99px; transition: width 1s linear; }
     /* 問題 */
     .q-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
-    .q-num-label { font-size: 0.78rem; color: #2ecc71; font-weight: 700; }
-    .q-cat { font-size: 0.72rem; color: #81c784; background: rgba(46,204,113,0.1); padding: 3px 10px; border-radius: 99px; }
-    .q-text { font-size: 1.05rem; font-weight: 700; color: #e8f5e9; line-height: 1.7; margin-bottom: 20px; min-height: 80px; }
+    .q-num-label { font-size: 0.78rem; color: #0288d1; font-weight: 700; }
+    .q-cat { font-size: 0.72rem; color: #0277bd; background: rgba(2,136,209,0.1); padding: 3px 10px; border-radius: 99px; }
+    .q-text { font-size: 1.05rem; font-weight: 700; color: #01579b; line-height: 1.7; margin-bottom: 20px; min-height: 80px; }
     .options { display: flex; flex-direction: column; gap: 12px; }
-    .opt { width: 100%; padding: 16px 18px; background: rgba(255,255,255,0.05); border: 2px solid rgba(100,200,120,0.2); border-radius: 12px; font-family: 'Noto Sans JP', sans-serif; font-size: 0.95rem; color: #a5d6a7; cursor: pointer; transition: all 0.2s; text-align: left; }
-    .opt:hover { background: rgba(46,204,113,0.12); border-color: #2ecc71; color: #e8f5e9; transform: translateX(6px); }
-    .opt.correct { background: rgba(46,204,113,0.2) !important; border-color: #2ecc71 !important; color: #2ecc71 !important; font-weight: 700; transform: none; }
-    .opt.wrong { background: rgba(231,76,60,0.15) !important; border-color: #e74c3c !important; color: #e74c3c !important; transform: none; }
-    .opt.timeout { background: rgba(150,150,150,0.1) !important; border-color: #666 !important; color: #666 !important; transform: none; }
+    .opt { width: 100%; padding: 16px 18px; background: rgba(2,136,209,0.04); border: 2px solid rgba(2,136,209,0.2); border-radius: 12px; font-family: 'Noto Sans JP', sans-serif; font-size: 0.95rem; color: #0277bd; cursor: pointer; transition: all 0.2s; text-align: left; }
+    .opt:hover { background: rgba(2,136,209,0.1); border-color: #0288d1; color: #01579b; transform: translateX(6px); }
+    .opt.correct { background: rgba(46,204,113,0.15) !important; border-color: #2ecc71 !important; color: #1a7a3a !important; font-weight: 700; transform: none; }
+    .opt.wrong { background: rgba(231,76,60,0.1) !important; border-color: #e74c3c !important; color: #c0392b !important; transform: none; }
+    .opt.timeout { background: rgba(150,150,150,0.08) !important; border-color: #ccc !important; color: #999 !important; transform: none; }
     /* 結果 */
     .result-emoji { text-align: center; font-size: 4.5rem; margin: 16px 0; }
-    .result-score-big { text-align: center; font-size: 3.5rem; font-weight: 900; color: #2ecc71; }
-    .result-sub { text-align: center; font-size: 1rem; color: #81c784; margin-bottom: 4px; }
-    .result-pct { text-align: center; font-size: 1.4rem; font-weight: 700; color: #a5d6a7; margin-bottom: 20px; }
-    .prize-box { background: rgba(255,215,0,0.08); border: 2px solid rgba(255,215,0,0.4); border-radius: 14px; padding: 20px; text-align: center; margin: 16px 0; }
-    .prize-title { font-size: 1.2rem; font-weight: 900; color: #ffd700; margin-bottom: 8px; }
-    .prize-desc { font-size: 0.85rem; color: #c8a800; line-height: 1.8; }
-    .no-prize-box { background: rgba(255,255,255,0.04); border: 1px solid rgba(100,200,120,0.15); border-radius: 14px; padding: 20px; text-align: center; margin: 16px 0; font-size: 0.95rem; color: #81c784; line-height: 1.8; }
+    .result-score-big { text-align: center; font-size: 3.5rem; font-weight: 900; color: #0288d1; }
+    .result-sub { text-align: center; font-size: 1rem; color: #0277bd; margin-bottom: 4px; }
+    .result-pct { text-align: center; font-size: 1.4rem; font-weight: 700; color: #0288d1; margin-bottom: 20px; }
+    .prize-box { background: rgba(255,215,0,0.1); border: 2px solid rgba(255,215,0,0.5); border-radius: 14px; padding: 20px; text-align: center; margin: 16px 0; }
+    .prize-title { font-size: 1.2rem; font-weight: 900; color: #f39c12; margin-bottom: 8px; }
+    .prize-desc { font-size: 0.85rem; color: #b7770d; line-height: 1.8; }
+    .no-prize-box { background: rgba(2,136,209,0.05); border: 1px solid rgba(2,136,209,0.15); border-radius: 14px; padding: 20px; text-align: center; margin: 16px 0; font-size: 0.95rem; color: #0277bd; line-height: 1.8; }
     .wrong-list { margin: 16px 0; }
-    .wrong-title { font-size: 0.85rem; font-weight: 700; color: #e74c3c; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid rgba(231,76,60,0.3); }
-    .wrong-item { background: rgba(231,76,60,0.08); border: 1px solid rgba(231,76,60,0.2); border-radius: 10px; padding: 12px 14px; margin-bottom: 8px; }
-    .wrong-q { font-size: 0.85rem; color: #e8f5e9; font-weight: 700; margin-bottom: 6px; line-height: 1.5; }
-    .wrong-a { font-size: 0.82rem; color: #2ecc71; }
-    .retry-btn { width: 100%; padding: 16px; background: transparent; color: #2ecc71; border: 1px solid #2ecc71; border-radius: 12px; font-family: 'Noto Sans JP', sans-serif; font-size: 0.95rem; font-weight: 700; cursor: pointer; margin-top: 12px; transition: all 0.2s; }
-    .retry-btn:hover { background: rgba(46,204,113,0.1); }
+    .wrong-title { font-size: 0.85rem; font-weight: 700; color: #e74c3c; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid rgba(231,76,60,0.2); }
+    .wrong-item { background: rgba(231,76,60,0.05); border: 1px solid rgba(231,76,60,0.15); border-radius: 10px; padding: 12px 14px; margin-bottom: 8px; }
+    .wrong-q { font-size: 0.85rem; color: #01579b; font-weight: 700; margin-bottom: 6px; line-height: 1.5; }
+    .wrong-a { font-size: 0.82rem; color: #27ae60; }
+    .retry-btn { width: 100%; padding: 16px; background: transparent; color: #0288d1; border: 1px solid #0288d1; border-radius: 12px; font-family: 'Noto Sans JP', sans-serif; font-size: 0.95rem; font-weight: 700; cursor: pointer; margin-top: 12px; transition: all 0.2s; }
+    .retry-btn:hover { background: rgba(2,136,209,0.08); }
     /* ローディング */
     .loading-wrap { text-align: center; padding: 40px 0; }
     .loading-icon { font-size: 3rem; display: block; margin-bottom: 12px; animation: spin 1.2s linear infinite; }
     @keyframes spin { 0%{transform:rotate(0deg)} 100%{transform:rotate(360deg)} }
-    .loading-text { color: #2ecc71; font-weight: 700; font-size: 0.9rem; }
+    .loading-text { color: #0288d1; font-weight: 700; font-size: 0.9rem; }
   </style>
 </head>
 <body>
@@ -77,7 +77,7 @@
     <p class="desc">男性ホルモンに関する20問のクイズです。95%以上正解すると毎月5名にAmazonギフト券500円分が当たる抽選に参加できます！</p>
     <div class="info-box">
       <div class="info-box-title">🎁 プレゼントについて</div>
-     <div class="info-box-body">正解率95%以上でプレゼント抽選参加！<br>毎月5名様にAmazonギフト券500円分<br>当選者にはLINEでご連絡します<br>（毎月15日抽選・20日当選連絡＆ギフトコード送信）</div>
+      <div class="info-box-body">正解率95%以上でプレゼント抽選参加！<br>毎月5名様にAmazonギフト券500円分<br>当選者にはLINEでご連絡します<br>（毎月15日抽選・20日当選連絡＆ギフトコード送信）</div>
     </div>
     <div class="info-box">
       <div class="info-box-title">⏱️ クイズのルール</div>
@@ -132,7 +132,7 @@
   <!-- LOADING -->
   <div id="screen-loading" class="card" style="display:none">
     <div class="loading-wrap">
-      <span class="loading-icon">⚙️</span>
+      <span class="loading-icon">🌊</span>
       <div class="loading-text" id="loading-text">読み込み中...</div>
     </div>
   </div>
@@ -153,13 +153,11 @@
 
 </div>
 <script>
-// ===== 設定 =====
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbyC8FRMzZkGfKt6E4jxKDzpy32Mjv771tGLYhzLbpteH4AdT63Qx-F9AqgT_C8auJjXcA/exec';
 const LINE_CHANNEL_ID = '2010588724';
 const TIMER_SEC = 10;
 const PRIZE_MIN = 95;
 
-// ===== 状態 =====
 let questions = [];
 let idx = 0;
 let score = 0;
@@ -168,7 +166,6 @@ let timerID = null;
 let lock = false;
 let lineUid = null;
 
-// ===== 初期化 =====
 window.addEventListener('DOMContentLoaded', () => {
   lineUid = (document.cookie.split(';').map(c=>c.trim()).find(c=>c.startsWith('line_uid=')) || '').split('=')[1] || null;
   if (lineUid) {
@@ -182,7 +179,6 @@ window.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btn-retry').onclick = () => location.reload();
 });
 
-// ===== 画面切替 =====
 function show(id) {
   ['screen-top','screen-quiz','screen-loading','screen-result'].forEach(s => {
     document.getElementById(s).style.display = s === id ? 'block' : 'none';
@@ -190,7 +186,6 @@ function show(id) {
   window.scrollTo(0, 0);
 }
 
-// ===== LINEログイン =====
 function onLine() {
   if (!document.getElementById('age-group').value) { alert('年代を選択してください'); return; }
   const p = new URLSearchParams({
@@ -201,7 +196,6 @@ function onLine() {
   location.href = 'https://access.line.me/oauth2/v2.1/authorize?' + p;
 }
 
-// ===== クイズ開始 =====
 async function onStart() {
   if (!document.getElementById('age-group').value) { alert('年代を選択してください'); return; }
   show('screen-loading');
@@ -224,19 +218,14 @@ async function onStart() {
   }
 }
 
-// ===== 問題表示 =====
 function nextQ() {
   if (idx >= questions.length) { finalize(); return; }
   lock = false;
-
   const q = questions[idx];
   const correct = parseInt(q.correct_answer, 10);
-
   document.getElementById('q-num').textContent = '問題 ' + (idx+1) + ' / ' + questions.length;
   document.getElementById('q-cat').textContent = q.category || '';
   document.getElementById('q-text').textContent = q.question || '';
-
-  // 選択肢を作り直す
   const box = document.getElementById('options');
   box.innerHTML = '';
   [q.option1, q.option2, q.option3].forEach((txt, i) => {
@@ -247,11 +236,9 @@ function nextQ() {
     btn.onclick = () => answer(btn, i + 1, correct, [q.option1, q.option2, q.option3]);
     box.appendChild(btn);
   });
-
   startTimer(correct, [q.option1, q.option2, q.option3]);
 }
 
-// ===== タイマー =====
 function startTimer(correct, choices) {
   clearInterval(timerID);
   let t = TIMER_SEC;
@@ -260,7 +247,6 @@ function startTimer(correct, choices) {
   timerEl.className = 'timer';
   timerEl.textContent = t;
   fillEl.style.width = '100%';
-
   timerID = setInterval(() => {
     t--;
     timerEl.textContent = t;
@@ -270,7 +256,6 @@ function startTimer(correct, choices) {
       clearInterval(timerID);
       if (!lock) {
         lock = true;
-        // 時間切れ：全ボタンをタイムアウト色に
         document.querySelectorAll('.opt').forEach(b => { b.classList.add('timeout'); b.onclick = null; });
         wrongList.push({ q: document.getElementById('q-text').textContent, a: choices[correct-1] });
         setTimeout(() => { idx++; nextQ(); }, 900);
@@ -279,72 +264,59 @@ function startTimer(correct, choices) {
   }, 1000);
 }
 
-// ===== 回答処理 =====
 function answer(btn, selected, correct, choices) {
   if (lock) return;
   lock = true;
   clearInterval(timerID);
-
-  // 全ボタンのクリックを無効化
   document.querySelectorAll('.opt').forEach(b => { b.onclick = null; });
-
   if (selected === correct) {
     score++;
     btn.classList.add('correct');
   } else {
     btn.classList.add('wrong');
-    // 正解ボタンを緑に
     document.querySelectorAll('.opt').forEach(b => {
       if (parseInt(b.dataset.num) === correct) b.classList.add('correct');
     });
     wrongList.push({ q: document.getElementById('q-text').textContent, a: choices[correct-1] });
   }
-
   setTimeout(() => { idx++; nextQ(); }, 700);
 }
 
-// ===== 結果表示 =====
 async function finalize() {
   clearInterval(timerID);
   show('screen-loading');
   document.getElementById('loading-text').textContent = '結果を集計中...';
-
   const total = questions.length;
   const pct = Math.round(score / total * 100);
   const age = document.getElementById('age-group').value;
   const isPrize = !!lineUid && pct >= PRIZE_MIN;
-
   try {
     await fetch(GAS_URL, {
       method: 'POST',
       body: JSON.stringify({ action: 'saveResult', line_id: lineUid || '未ログイン', age, correct: score, percentage: pct })
     });
   } catch(e) { console.error('保存エラー', e); }
-
   setTimeout(() => {
     document.getElementById('r-emoji').textContent = pct >= 95 ? '🏆' : pct >= 80 ? '🎯' : pct >= 60 ? '📚' : '💪';
     document.getElementById('r-score').textContent = score;
     document.getElementById('r-sub').textContent = '問正解 / ' + total + '問';
     document.getElementById('r-pct').textContent = '正解率 ' + pct + '%';
-
     const pa = document.getElementById('prize-area');
     if (isPrize) {
-      pa.innerHTML = '<div class="prize-box"><div class="prize-title">🎉 おめでとうございます！</div><div class="prize-desc">正解率' + pct + '%達成！<br>Amazonギフト券500円分の抽選対象です。<br>当選者にはLINEでご連絡します。</div></div>';
+      pa.innerHTML = '<div class="prize-box"><div class="prize-title">🎉 おめでとうございます！</div><div class="prize-desc">正解率' + pct + '%達成！<br>Amazonギフト券500円分の抽選対象です。<br>毎月15日抽選・20日にLINEでご連絡します。</div></div>';
     } else if (!lineUid) {
       pa.innerHTML = '<div class="no-prize-box">抽選に参加するには<br>LINEログインが必要です。</div>';
     } else {
       pa.innerHTML = '<div class="no-prize-box">惜しい！正解率95%以上で<br>抽選対象になります。<br>次回またチャレンジしてください！</div>';
     }
-
     const wa = document.getElementById('wrong-area');
     if (wrongList.length > 0) {
       wa.innerHTML = '<div class="wrong-list"><div class="wrong-title">❌ 不正解・時間切れ（' + wrongList.length + '問）</div>'
         + wrongList.map(w => '<div class="wrong-item"><div class="wrong-q">Q. ' + w.q + '</div><div class="wrong-a">✅ 正解：' + w.a + '</div></div>').join('')
         + '</div>';
     } else {
-      wa.innerHTML = '<div style="text-align:center;color:#2ecc71;font-weight:700;padding:12px;">🎉 全問正解！素晴らしい！</div>';
+      wa.innerHTML = '<div style="text-align:center;color:#0288d1;font-weight:700;padding:12px;">🎉 全問正解！素晴らしい！</div>';
     }
-
     show('screen-result');
   }, 1000);
 }
