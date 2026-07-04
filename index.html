@@ -297,7 +297,7 @@ async function finalize() {
     });
   } catch(e) { console.error('保存エラー', e); }
   setTimeout(() => {
-    document.getElementById('r-emoji').textContent = pct >= 95 ? '🏆' : pct >= 80 ? '🎯' : pct >= 60 ? '📚' : '💪';
+    document.getElementById('r-emoji').textContent =  '' ;
     document.getElementById('r-score').textContent = score;
     document.getElementById('r-sub').textContent = '問正解 / ' + total + '問';
     document.getElementById('r-pct').textContent = '正解率 ' + pct + '%';
