@@ -19,7 +19,8 @@
     .banner {
       position: relative; height: 120px; color: #fff; padding: 12px 16px;
       display: flex; flex-direction: column; justify-content: space-between;
-      background: linear-gradient(rgba(0,45,65,0.20), rgba(0,45,65,0.50)), url('banner.jpg') center / cover no-repeat, linear-gradient(135deg,#29b6f6,#1fa6a0);
+      background-color: #1fa6a0;
+      background-position: center; background-size: cover; background-repeat: no-repeat;
       transition: height 0.3s ease;
     }
     .banner.tall { height: 230px; justify-content: center; align-items: center; }
@@ -202,6 +203,8 @@ const LINE_CHANNEL_ID = '2010588724';
 const TIMER_SEC = 10;
 const PRIZE_MIN = 95;
 const LETTERS = ['A', 'B', 'C'];
+const BANNERS = ['banner1.jpg', 'banner2.jpg', 'banner3.jpg'];
+const BANNER_EVERY = 6;
 
 let questions = [];
 let idx = 0;
@@ -211,7 +214,14 @@ let timerID = null;
 let lock = false;
 let lineUid = null;
 
+function setBanner(file) {
+  document.getElementById('banner').style.backgroundImage =
+    "linear-gradient(rgba(0,45,65,0.20), rgba(0,45,65,0.50)), url('" + file + "')";
+}
+
 window.addEventListener('DOMContentLoaded', () => {
+  BANNERS.forEach(f => { const im = new Image(); im.src = f; });
+  setBanner(BANNERS[0]);
   lineUid = (document.cookie.split(';').map(c=>c.trim()).find(c=>c.startsWith('line_uid=')) || '').split('=')[1] || null;
   if (lineUid) {
     document.getElementById('user-badge').style.display = 'block';
@@ -230,6 +240,7 @@ function show(id) {
   });
   document.getElementById('banner').className = 'banner ' + (id === 'screen-quiz' ? 'quiz' : 'tall');
   document.getElementById('score-panel').style.display = id === 'screen-quiz' ? 'block' : 'none';
+  if (id !== 'screen-quiz') setBanner(BANNERS[0]);
   window.scrollTo(0, 0);
 }
 
@@ -277,6 +288,7 @@ function nextQ() {
   const correct = parseInt(q.correct_answer, 10);
   const choices = [q.option1, q.option2, q.option3];
 
+  setBanner(BANNERS[Math.floor(idx / BANNER_EVERY) % BANNERS.length]);
   document.getElementById('q-big-num').textContent = 'Q' + (idx + 1);
   document.getElementById('q-big-total').textContent = '/' + questions.length;
   document.getElementById('q-cat').textContent = q.category || '';
